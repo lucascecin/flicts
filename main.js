@@ -5,22 +5,37 @@
 // foi resgatado!
 // Quantos mais forem salvos, aumenta a velocidade do jogo
 // para celular, deixa pra um lado ou para o outro!
+// pode ser um touch event à esquerda ou à direita da lua
 
-
+//setup
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
+const fullScreenButton = document.getElementById('fullScreenButton')
 
 canvas.width = 1200
 canvas.height = 800
 
-//variables
+function toggleFullScreen() {
+    console.log(document.fullscreenElement)
+    if (!document.fullscreenElement) {
+        canvas.requestFullscreen().catch(err => {
+            alert(`Erro, não foi possível entrar em tela cheia: ${err.message}`)
+        })
+    } else {
+        document.exitFullscreen()
+    }
+}
+fullScreenButton.addEventListener('click', toggleFullScreen)
+
+
+//game variables
 let frame = 0
-let gameSpeed = 1
+let gameSpeed = 2
 caraOuCoroa = ["cara", "coroa"]
 
 function spawnSquareOrFlicts() {
 
-    if (frame % 350 === 0) {
+    if (frame % 300 === 0) {
 
         let flictsOrSquare = caraOuCoroa[Math.floor(Math.random() * caraOuCoroa.length)]
 
