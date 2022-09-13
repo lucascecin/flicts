@@ -60,7 +60,8 @@ frajolaFlicts.src = 'img/frajolaFlicts.png'
 
 //20
 const aliceFlicts = new Image()
-aliceFlicts.src = 'img/aliceFlicts'
+aliceFlicts.src = 'img/aliceFlicts.png'
+
 
 //audio assets
 const hitSquare = new Audio()
@@ -75,19 +76,19 @@ flictsSprites = [miauflicts, monstroFlicts, anaFlicts, rodrigoFlicts,
                 isadorinhaFlicts, salsichaFlicts, centopeiaFlicts, dinossauroFlicts,
                 estrelaFlicts, coelhoFlicts, lunaFlicts, esquiloVoador, mariFlicts,
                 berenice, borboletaFlicts, alienFlicts, solFlicts, cobraFlicts,
-                frajolaFlicts, aliceFlicts];
+                frajolaFlicts, aliceFlicts]; //20
 flictsArray = [];
 
 //Flicts Class
 class Flicts {
     constructor(sourceImage) {
         this.sourceImage = sourceImage    
-        this.width = sourceImage.width/2
-        this.height = sourceImage.height/2
+        this.width = sourceImage.width/2 || 150
+        this.height = sourceImage.height/2 || 150
         this.x = Math.random() * (canvas.width - this.width)
         this.y = -200
         this.dx = (Math.random() - 0.5) * 2.5 
-        this.dy = (Math.random() * 1.5) + 1.5 
+        this.dy = (Math.random() * 1.3) + 0.9 
         this.isOutofScreen = false
     }
     update() {
@@ -99,6 +100,7 @@ class Flicts {
     }
     draw(){
         this.sourceImage.onload = ctx.drawImage(this.sourceImage, this.x, this.y, this.width, this.height)
+        
     }
 }
 

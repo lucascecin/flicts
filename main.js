@@ -63,4 +63,8 @@ function animate() {
     if (quitGame) {return} // if presse "Q"
     requestAnimationFrame(animate)
 }
-animate()
+
+function init() {
+    setTimeout(()=>{animate()},500)
+}
+init()
