@@ -1,6 +1,6 @@
 //1
 const miauflicts = new Image()
-miauflicts.src = 'img/miauflicts.png'
+miauflicts.src = 'img/miauFlicts.png'
 //2
 const monstroFlicts = new Image()
 monstroFlicts.src = 'img/monstroFlicts.png'
