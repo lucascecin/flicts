@@ -17,13 +17,13 @@ class Player {
     }
     update() {
         if (this.mvRight) {
-            this.x += 3
+            this.x += 6
             if (this.x + this.width > canvas.width) {
                 this.x = canvas.width - this.width
             }
         }
         if (this.mvLeft) {
-            this.x -= 3
+            this.x -= 6
             if (this.x < 0) {
                 this.x = 0
             }

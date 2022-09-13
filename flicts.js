@@ -50,6 +50,18 @@ alienFlicts.src = 'img/alienFlicts.png'
 const solFlicts = new Image()
 solFlicts.src = 'img/solFlicts.png'
 
+//18
+const cobraFlicts = new Image()
+cobraFlicts.src = 'img/cobraFlicts.png'
+
+//19
+const frajolaFlicts = new Image()
+frajolaFlicts.src = 'img/frajolaFlicts.png'
+
+//20
+const aliceFlicts = new Image()
+aliceFlicts.src = 'img/aliceFlicts'
+
 //audio assets
 const hitSquare = new Audio()
 hitSquare.src = 'audio/collideWithSquare.wav'
@@ -62,7 +74,8 @@ hitFlicts.volume = 0.3
 flictsSprites = [miauflicts, monstroFlicts, anaFlicts, rodrigoFlicts, 
                 isadorinhaFlicts, salsichaFlicts, centopeiaFlicts, dinossauroFlicts,
                 estrelaFlicts, coelhoFlicts, lunaFlicts, esquiloVoador, mariFlicts,
-                berenice, borboletaFlicts, alienFlicts, solFlicts];
+                berenice, borboletaFlicts, alienFlicts, solFlicts, cobraFlicts,
+                frajolaFlicts, aliceFlicts];
 flictsArray = [];
 
 //Flicts Class
@@ -73,8 +86,8 @@ class Flicts {
         this.height = sourceImage.height/2
         this.x = Math.random() * (canvas.width - this.width)
         this.y = -200
-        this.dx = (Math.random() - 0.5) * 2 // random entre -1 e 1
-        this.dy = (Math.random() * 2) + 1 // random entre -1 e 1
+        this.dx = (Math.random() - 0.5) * 2.5 
+        this.dy = (Math.random() * 1.5) + 1.5 
         this.isOutofScreen = false
     }
     update() {
@@ -85,7 +98,7 @@ class Flicts {
         if (this.y > canvas.height) this.isOutofScreen = true;
     }
     draw(){
-        ctx.drawImage(this.sourceImage, this.x, this.y, this.width, this.height)
+        this.sourceImage.onload = ctx.drawImage(this.sourceImage, this.x, this.y, this.width, this.height)
     }
 }
 
@@ -108,20 +121,16 @@ function destroyFlictsOutOfScreen(){
 } 
 
 function handleFlicts(){
-   
     for (i in flictsArray){
         flictsArray[i].update()
         flictsArray[i].draw()
-        
+
         //Quando a Lua resgata (colide) o Flicts
         if (collision(player, flictsArray[i])) {
             flictsArray.splice(i, 1)
             hitFlicts.play()
-            
         }
     }
-    
     destroyFlictsOutOfScreen()
-
 }
 

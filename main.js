@@ -4,8 +4,6 @@
 // cria uma mensagem pop up temporario no canto superior direita dizendo qual flicts
 // foi resgatado!
 // Quantos mais forem salvos, aumenta a velocidade do jogo
-// para celular, deixa pra um lado ou para o outro!
-// pode ser um touch event à esquerda ou à direita da lua
 
 //setup
 const canvas = document.getElementById('canvas')
@@ -27,15 +25,18 @@ function toggleFullScreen() {
 }
 fullScreenButton.addEventListener('click', toggleFullScreen)
 
-
 //game variables
 let frame = 0
-let gameSpeed = 2
+let gameSpeed = 4
 caraOuCoroa = ["cara", "coroa"]
+let squareOrFlictsInterval = Math.random() 
+
+// 150 / 60 = 
+
 
 function spawnSquareOrFlicts() {
 
-    if (frame % 300 === 0) {
+    if (frame % 120 === 0) {
 
         let flictsOrSquare = caraOuCoroa[Math.floor(Math.random() * caraOuCoroa.length)]
 
@@ -49,8 +50,6 @@ function spawnSquareOrFlicts() {
         }
     }
 }
-
-
 
 function animate() {
     frame++

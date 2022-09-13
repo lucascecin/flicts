@@ -1,5 +1,6 @@
 squaresArray = []
-colorsArray = ['red', 'orange', 'yellow', 'green', 'blue', '0047AB', 'purple']
+colorsArray = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+// retirado para teste: '0047AB'
 
 class Square {
     constructor(color) {
@@ -8,7 +9,7 @@ class Square {
         this.x = Math.random() * (canvas.width - this.width)
         this.y = -80;
         this.dx = (Math.random() - 0.5) * 2 // random entre -0.5 e 0.5
-        this.dy = 1;
+        this.dy = Math.random() * 1 + 1;
         this.isOutofScreen = false; 
         this.color = color
     }

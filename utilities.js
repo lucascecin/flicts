@@ -35,6 +35,13 @@ window.addEventListener("touchend", e => {
     
 })
 
+// testar mover pela screen orientation > type and angle properties
+// em pé = 0 graus (de cabeça para baixo = 180 graus)
+// deitado = 90 ou 270 graus
+// obs.: não existe relação entre type e angle! (pode mudar para cada telefone!)
+// ScreenOrientation
+
+
 function keydownHandler(e) {
     switch(e.keyCode){
         case RIGHT:
