@@ -29,9 +29,19 @@ fullScreenButton.addEventListener('click', toggleFullScreen)
 let frame = 0
 let gameSpeed = 4
 caraOuCoroa = ["cara", "coroa"]
-let squareOrFlictsInterval = Math.random() 
 
-// 150 / 60 = 
+function handleGameSpeed() {
+    if (increaseGameSpeedButtonPressed) {
+        gameSpeed += 0.05
+        console.log('game speed: ' + gameSpeed)
+    }
+
+    if (decreaseGameSpeedButtonPressed) {
+        gameSpeed -= 0.05
+        console.log('game speed: ' + gameSpeed)
+    }
+}
+
 
 
 function spawnSquareOrFlicts() {
@@ -42,11 +52,9 @@ function spawnSquareOrFlicts() {
 
         if (flictsOrSquare == "cara") {
             createFlicts()
-            console.log('Flics Spawned')
         } 
         if (flictsOrSquare == "coroa") {
             createSquares()
-            console.log('Square Spawned')
         }
     }
 }
@@ -60,6 +68,7 @@ function animate() {
     spawnSquareOrFlicts()
     handleFlicts()
     handlesquares()
+    handleGameSpeed()
     if (quitGame) {return} // if presse "Q"
     requestAnimationFrame(animate)
 }

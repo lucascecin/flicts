@@ -1,13 +1,16 @@
 // inputs and collision funtion
 
 // inputs
-const LEFT = 37, RIGHT = 39, SPACE = 32, Q = 81
+const LEFT = 37, RIGHT = 39, SPACE = 32, Q = 81, 
+      INCREASE = 107, DECREASE = 109;
 let spaceIsPressed = false
 let quitGame = false
 //let touchY = ''
 //let touchTreshold = 30 // minumun swipe
-let touching = false;
-let touchingX = 0;
+let touching = false
+let touchingX = 0
+let increaseGameSpeedButtonPressed = false
+let decreaseGameSpeedButtonPressed = false
 
 window.addEventListener("keydown", keydownHandler, false)
 window.addEventListener("keyup", keyupHandler, false)
@@ -35,13 +38,6 @@ window.addEventListener("touchend", e => {
     
 })
 
-// testar mover pela screen orientation > type and angle properties
-// em pé = 0 graus (de cabeça para baixo = 180 graus)
-// deitado = 90 ou 270 graus
-// obs.: não existe relação entre type e angle! (pode mudar para cada telefone!)
-// ScreenOrientation
-
-
 function keydownHandler(e) {
     switch(e.keyCode){
         case RIGHT:
@@ -62,6 +58,14 @@ function keydownHandler(e) {
         case Q:
             quitGame = true
             break
+        case INCREASE:
+            increaseGameSpeedButtonPressed = true
+            console.log("increaseGameSpeedButtonPressed")
+            break
+        case DECREASE:
+            decreaseGameSpeedButtonPressed = true
+            console.log("decreaseGameSpeedButtonPressed")
+            break
     }
 }
 
@@ -69,7 +73,7 @@ function keyupHandler(e) {
     switch(e.keyCode){
         case RIGHT:
             player.mvRight = false
-            break;
+            break
         case LEFT:
             player.mvLeft = false
             break
@@ -78,6 +82,12 @@ function keyupHandler(e) {
             //player.firing = false;
             //player.canFireAgain = true;
             break
+        case INCREASE:
+            increaseGameSpeedButtonPressed = false
+            break
+        case DECREASE:
+            decreaseGameSpeedButtonPressed = false
+            break        
     }
 }
 

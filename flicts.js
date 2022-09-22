@@ -83,8 +83,8 @@ flictsArray = [];
 class Flicts {
     constructor(sourceImage) {
         this.sourceImage = sourceImage    
-        this.width = sourceImage.width/2 || 150
-        this.height = sourceImage.height/2 || 150
+        this.width = sourceImage.width/1.75 || 150
+        this.height = sourceImage.height/1.75 || 150
         this.x = Math.random() * (canvas.width - this.width)
         this.y = -200
         this.dx = (Math.random() - 0.5) * 2.5 
@@ -99,6 +99,7 @@ class Flicts {
         if (this.y > canvas.height) this.isOutofScreen = true;
     }
     draw(){
+        
         this.sourceImage.onload = ctx.drawImage(this.sourceImage, this.x, this.y, this.width, this.height)
         
     }
@@ -131,6 +132,8 @@ function handleFlicts(){
         if (collision(player, flictsArray[i])) {
             flictsArray.splice(i, 1)
             hitFlicts.play()
+            gameSpeed += 0.05
+            console.log('game speed: ' + gameSpeed)
         }
     }
     destroyFlictsOutOfScreen()
